@@ -1,0 +1,73 @@
+<canvas id='tablero'  width=800 height = 500></canvas>
+<script>
+
+	function polygon(a, colorBorde, colorRelleno ) {  
+  ctx.beginPath()
+  ctx.strokeStyle  = colorBorde 
+  ctx.lineWidth = 4;
+  ctx.fillStyle = colorRelleno 
+  ctx.moveTo(a[0],a[3])
+  for (i=2; i < a.length; i+=2)
+    ctx.lineTo(a[i],a[i+1]);
+  ctx.closePath()
+  ctx.stroke()
+  ctx.fill()
+}
+	function rectangulos(cd,colorBorde,colorRelleno,grosor){
+	ctx.beginPath();
+	ctx.strokeStyle = colorBorde;
+	ctx.fillStyle=colorRelleno;
+	ctx.lineWidth= grosor;
+	ctx.moveTo(cd[0],cd[1]);
+	ctx.lineTo(cd[2],cd[3]);
+	ctx.lineTo(cd[4],cd[5]);
+	ctx.lineTo(cd[6],cd[7]);
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+ 
+if (ctx) {
+	var X = tablero.width/2;
+	var Y = tablero.height/2;
+	var r = 75;
+	ctx.strokeStyle = colorBorde;
+	ctx.fillStyle = colorRelleno 
+	ctx.arc(X,Y,r,0,2*Math.PI);
+	ctx.fill();
+	ctx.stroke();
+       "rgba(237,28,36)";
+			}
+}
+	function recorte(arr){
+	ctx.beginPath();
+	ctx.moveTo(arr[0],arr[1]);
+	ctx.lineTo(arr[2],arr[3]);
+	ctx.lineTo(arr[4],arr[5]);
+	ctx.lineTo(arr[6],arr[7]);
+	ctx.clip();
+}
+	function recorteTr(arr){
+	ctx.beginPath();
+	ctx.moveTo(arr[0],arr[1]);
+	ctx.lineTo(arr[2],arr[3]);
+	ctx.lineTo(arr[4],arr[5]);
+	ctx.clip();
+}
+	var c = document.getElementById('tablero')
+	var ctx = c.getContext('2d')
+
+	
+	var trGris = [132,300,393,165,467,368];
+	var [gris, amarillo, rojo, verde, blue] = ['rgba(195,195,195)','rgba(255,242,0)','rgba(255,127,39)',
+        'rgba(34,177,76)', 'rgba(0,162,232)'];	
+	
+	polygon([344,4,542,146,467,368,222,368,148,142,344,4,539,142], 'rgba(0,162,232)', 'rgba(0,162,232)')
+        polygon([303,68,180,156,225,304,378,303,426,156,303,68,180,156], 'rgba(0,162,232)','white')
+   
+	rectangulos([12,142,547,236,543,287,4,191],'rgba(181,230,29)', 'rgba(181,230,29)')
+
+        
+	
+	
+		
+</script>

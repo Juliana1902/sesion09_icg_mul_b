@@ -1,9 +1,10 @@
 <canvas id='tablero'  width=800 height = 650></canvas>
 <script>
 
-	function rectangulo(cd,colorRelleno,grosor){
-	ctx.beginPath();	
-	ctx.fillStyle='rgba(181,230,29)';
+	function rectangulo(cd,colorBorde,colorRelleno,grosor){
+	ctx.beginPath();
+	ctx.strokeStyle = colorBorde;
+	ctx.fillStyle=colorRelleno;
 	ctx.lineWidth= grosor;
 	ctx.moveTo(cd[0],cd[1]);
 	ctx.lineTo(cd[2],cd[3]);
@@ -39,25 +40,35 @@
 	var poliAzul = [344,3,149,142,222,368,465,368,540,142];
 	var poliBlanco = [304,67,424,149,379,303,226,304,181,156];
 	var rectVerde = [11,143,5,192,544,290,547,238];
+        var rectAzul= [184,248,208,242,220,287,199,293]
 	var [Azul, blanco, verde,rojo] = ['rgba(0,162,232)','rgba(255,255,255)','rgba(181,230,29)','rgba(237,28,36)'];
 	
 	poligono(poliAzul,'blue',Azul)
 	poligono(poliBlanco,'white', blanco)
-	rectangulo(rectVerde,'green')
-if (ctx) {
-        
+	rectangulo(rectVerde,'green', verde)
+        rectangulo(rectAzul,'blue',Azul)
+
+{
+       
+        ctx.beginPath();
 	ctx.fillStyle = 'red' 
 	ctx.arc(172,157,135,0,2*Math.PI);
 	ctx.fill();
-}
-rectangulo(rectVerde,'green', verde)
-
-if (ctx) {
+        ctx.closePath();
         
+
+}
+{
+        ctx.beginPath();
 	ctx.fillStyle = 'white' 
 	ctx.arc(190,180,90,0,2*Math.PI);
 	ctx.fill();
-			}
+        ctx.closePath();
+        ctx.clip();
+        poligono(poliAzul,'blue',Azul)
+	poligono(poliBlanco,'white', blanco)
 	rectangulo(rectVerde,'green', verde)
-	
+         
+}
+rectangulo(rectAzul,'blue',Azul)		
 </script>

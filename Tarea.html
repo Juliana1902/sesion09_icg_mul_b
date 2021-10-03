@@ -1,0 +1,48 @@
+<canvas id='tablero'  width=800 height = 800></canvas>
+<script>
+
+      function triangulo(x1, y1, x2, y2, x3, y3, colorBorde, colorRelleno) {
+      ctx.beginPath()
+      ctx.strokeStyle = colorBorde;
+      ctx.fillStyle= colorRelleno;
+      ctx.moveTo(x1,y1);
+      ctx.lineTo(x2,y2)
+      ctx.lineTo(x3, y3)
+      ctx.closePath()
+      ctx.stroke()
+      ctx.fill();
+}
+  function poligono(a, colorBorde, colorRelleno ) {  
+  ctx.beginPath()
+  ctx.strokeStyle  = colorBorde 
+  ctx.lineWidth = 4;
+  ctx.fillStyle = colorRelleno 
+  ctx.moveTo(a[0],a[3])
+  for (i=2; i < a.length; i+=2)
+    ctx.lineTo(a[i],a[i+1]);
+    ctx.closePath()
+    ctx.stroke()
+    ctx.fill()
+}
+	function recorte(arr){
+	ctx.beginPath();
+	ctx.moveTo(arr[0],arr[1]);
+	ctx.lineTo(arr[2],arr[3]);
+	ctx.lineTo(arr[4],arr[5]);
+	ctx.lineTo(arr[6],arr[7]);
+	ctx.clip();
+}
+	var c = document.getElementById('tablero')
+	var ctx = c.getContext('2d')
+	
+	var trianMorado = [481,405,653,59,825,406];
+	var poliMorado = [460,280,607,235,652,89,698,236,387,281,698,329,653,475,606,328,460,280];
+	var poliAmarillo = [11,143,5,192,544,290,547,238];
+        var PoliRosado= [184,248,208,242,220,287,199,293];
+	var [moradoO, moradoC,amarillo,rosado] = ['rgba(0,162,232)','rgba(255,255,255)','rgba(181,230,29)','rgba(237,28,36)'];
+	
+	triangulo(trianMorado,'moradoC', black)
+        poligono(poliMorado,'moradoO, black)
+	
+		
+</script>
